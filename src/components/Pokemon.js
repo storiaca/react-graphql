@@ -7,15 +7,23 @@ import { pokemonUrl } from "../data/pokemonUrl";
 //   baseURL: pokemonUrl
 // });
 function Pokemon(props) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ hits: [] });
   useEffect(async () => {
-    const result = await axios(pokemonUrl);
+    const result = await axios(
+      "https://hn.algolia.com/api/v1/search?query=redux"
+    );
     setData(result.data);
   }, []);
   console.log(data);
   return (
     <div>
-      <h1>Pokemon</h1>
+      <ul>
+        {data.hits.map(item => (
+          <li key={item.objectID}>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
