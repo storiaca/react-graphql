@@ -8,11 +8,15 @@ import { pokemonUrl } from "../data/pokemonUrl";
 // });
 function Pokemon(props) {
   const [data, setData] = useState({ hits: [] });
-  useEffect(async () => {
-    const result = await axios(
-      "https://hn.algolia.com/api/v1/search?query=redux"
-    );
-    setData(result.data);
+  useEffect(() => {
+    const fetchData = async() => {
+
+      const result = await axios(
+        "https://hn.algolia.com/api/v1/search?query=redux"
+      );
+      setData(result.data);
+    }
+    fetchData();
   }, []);
   console.log(data);
   return (
