@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { pokemonUrl } from "../data/pokemonUrl";
-//import { query } from "../util/query";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import POKEMON_QUERY from "../graphql/PokemoQuery.graphql";
 
-// const axiosPokemon = axios.create({
-//   baseURL: pokemonUrl
-// });
 function Pokemon(props) {
   const [data, setData] = useState({ hits: [] });
-  useEffect(() => {
-    const fetchData = async() => {
-
-      const result = await axios(
-        "https://hn.algolia.com/api/v1/search?query=redux"
-      );
-      setData(result.data);
-    }
-    fetchData();
-  }, []);
-  console.log(data);
   return (
     <div>
-      <ul>
-        {data.hits.map(item => (
-          <li key={item.objectID}>
-            <a href={item.url}>{item.title}</a>
-          </li>
-        ))}
-      </ul>
+      <h3>Pokemons</h3>
     </div>
   );
 }

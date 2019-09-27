@@ -1,25 +1,20 @@
 import React from "react";
+import ApolloClient, { InMemoryCache } from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { pokemonUrl } from "./data/pokemonUrl";
 import Pokemon from "./components/Pokemon";
 import "./App.css";
 
+const cache = new InMemoryCache();
+const client = new ApolloClient({
+  uri: pokemonUrl,
+  cache
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Pokemon />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Pokemon />
+    </ApolloProvider>
   );
 }
 
