@@ -49,16 +49,21 @@ function PokemonInfo(props) {
   } else {
     content = data.pokemons.map(item => {
       return (
-        <li key={item.id}>
-          {item.name} <img src={item.image} alt="" />
-        </li>
+        <Pokemon
+          key={item.id}
+          name={item.name}
+          image={item.image}
+          types={item.types}
+          height={item.height}
+          weight={item.weight}
+        />
       );
     });
   }
   return (
     <div>
-      <h3>Pokemons</h3>
-      <ul>{content}</ul>
+      <h1>Pokemons</h1>
+      {content}
     </div>
   );
 }
