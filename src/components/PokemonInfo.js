@@ -56,6 +56,7 @@ function PokemonInfo(props) {
           types={item.types}
           height={item.height}
           weight={item.weight}
+          attacks={item.attacks}
         />
       );
     });

@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import classes from "./Pokemon.module.css";
 
-function Pokemon({ name, image, types, height, weight }) {
+function Pokemon({ name, image, types, height, weight, attacks }) {
   const sepTypes = [...types];
   let pokTypes = sepTypes.join(", ");
+  const damage = attacks.special.map(attack => attack.damage);
+  console.log(attacks);
   return (
     <div className={classes.Pokemon}>
       <div>
@@ -12,7 +14,7 @@ function Pokemon({ name, image, types, height, weight }) {
       </div>
       <div>
         <h3>{name}</h3>
-        <h4>Pokemon type: {pokTypes}</h4>
+        <h4>{pokTypes}</h4>
         <p>Pokemon weight</p>
         <ul>
           <li>min: {weight.minimum}</li>
@@ -26,7 +28,7 @@ function Pokemon({ name, image, types, height, weight }) {
       </div>
       <div>
         <h3>Special attacks</h3>
-        <p>Attack: damage</p>
+        <p>Attack: {damage}</p>
       </div>
     </div>
   );
