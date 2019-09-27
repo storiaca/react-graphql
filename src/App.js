@@ -2,7 +2,7 @@ import React from "react";
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { pokemonUrl } from "./data/pokemonUrl";
-import Pokemon from "./components/Pokemon";
+import PokemonInfo from "./components/PokemonInfo";
 import "./App.css";
 
 const cache = new InMemoryCache();
@@ -13,7 +13,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Pokemon />
+      <PokemonInfo />
     </ApolloProvider>
   );
 }

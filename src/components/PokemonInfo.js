@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+import Pokemon from "./Pokemon/Pokemon";
+
 //import POKEMON_QUERY from "../graphql/PokemoQuery.graphql";
 
 const GET_POKEMONS = gql`
@@ -36,7 +38,7 @@ const GET_POKEMONS = gql`
     }
   }
 `;
-function Pokemon(props) {
+function PokemonInfo(props) {
   //const [data, setData] = useState({ hits: [] });
   const { loading, data, client } = useQuery(GET_POKEMONS);
 
@@ -47,18 +49,18 @@ function Pokemon(props) {
   } else {
     content = data.pokemons.map(item => {
       return (
-        <ul key={item.id}>
-          <li>{item.name}</li>
-        </ul>
+        <li key={item.id}>
+          {item.name} <img src={item.image} alt="" />
+        </li>
       );
     });
   }
   return (
     <div>
       <h3>Pokemons</h3>
-      {content}
+      <ul>{content}</ul>
     </div>
   );
 }
 
-export default Pokemon;
+export default PokemonInfo;
