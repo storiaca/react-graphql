@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import Pokemon from "./Pokemon/Pokemon";
+import classes from "./PokemonInfo.module.css";
 
 //import POKEMON_QUERY from "../graphql/PokemoQuery.graphql";
 
@@ -62,7 +63,7 @@ function PokemonInfo(props) {
     });
   }
   return (
-    <div>
+    <div className={classes.PokemonInfo}>
       <h1>Pokemons</h1>
       {content}
     </div>
