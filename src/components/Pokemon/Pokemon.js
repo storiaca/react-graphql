@@ -5,8 +5,11 @@ import classes from "./Pokemon.module.css";
 function Pokemon({ name, image, types, height, weight, attacks }) {
   const sepTypes = [...types];
   let pokTypes = sepTypes.join(", ");
-  const damage = attacks.special.map(attack => attack.damage);
-  console.log(attacks);
+  const damage = attacks.special.map(attack => (
+    <li key={attack.name}>
+      Name: {attack.name}, Type: {attack.type}, Damage: {attack.damage}
+    </li>
+  ));
   return (
     <div className={classes.Pokemon}>
       <div>
@@ -28,7 +31,7 @@ function Pokemon({ name, image, types, height, weight, attacks }) {
       </div>
       <div>
         <h3>Special attacks</h3>
-        <p>Attack: {damage}</p>
+        <ul>{damage}</ul>
       </div>
     </div>
   );
