@@ -6,6 +6,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
+  console.log(typeof postsPerPage, typeof totalPosts, paginate);
+
   return (
     <div className={classes.Pagination}>
       <ul>
@@ -21,6 +23,10 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   );
 };
 
-Pagination.propTypes = {};
+Pagination.propTypes = {
+  postsPerPage: PropTypes.number.isRequired,
+  totalPosts: PropTypes.string.isRequired,
+  paginate: PropTypes.func.isRequired
+};
 
 export default Pagination;
