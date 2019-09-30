@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import Pokemon from "./Pokemon/Pokemon";
+import Spinner from "./Spinner/Spinner";
 import classes from "./PokemonInfo.module.css";
 
 //import POKEMON_QUERY from "../graphql/PokemoQuery.graphql";
@@ -46,7 +47,7 @@ function PokemonInfo(props) {
   console.log(data);
   let content;
   if (loading) {
-    content = "Loading...";
+    content = <Spinner />;
   } else {
     content = data.pokemons.map(item => {
       return (
