@@ -3,4 +3,15 @@
   display: flex;
   justify-content: space-evenly;
   margin: 10px;
+  padding: 5px;
+}
+
+@media (max-width: 920px) {
+  .Pokemon {
+    flex-direction: column;
+    text-align: center;
+  }
+  .Pokemon div img {
+    width: 60%;
+  }
 }

@@ -44,7 +44,7 @@ function PokemonInfo(props) {
   //const [data, setData] = useState({ hits: [] });
   const { loading, data, client } = useQuery(GET_POKEMONS);
 
-  console.log(data);
+  //console.log(data);
   let content;
   if (loading) {
     content = <Spinner />;
