@@ -10,6 +10,7 @@ const client = new ApolloClient({
   uri: pokemonUrl,
   cache
 });
+
 function App() {
   return (
     <ApolloProvider client={client}>

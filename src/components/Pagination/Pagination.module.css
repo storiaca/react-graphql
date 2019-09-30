@@ -1,0 +1,10 @@
+.Pagination ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  padding-left: 0;
+}
+
+.Pagination ul li {
+  padding: 8px;
+}

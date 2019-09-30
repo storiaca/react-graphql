@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import Pokemon from "./Pokemon/Pokemon";
+import Pagination from "./Pagination/Pagination";
 import Spinner from "./Spinner/Spinner";
 import classes from "./PokemonInfo.module.css";
 
@@ -41,15 +42,22 @@ const GET_POKEMONS = gql`
   }
 `;
 function PokemonInfo(props) {
-  //const [data, setData] = useState({ hits: [] });
-  const { loading, data, client } = useQuery(GET_POKEMONS);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const { loading, data } = useQuery(GET_POKEMONS);
 
   //console.log(data);
+  //console.log(props);
+
   let content;
   if (loading) {
     content = <Spinner />;
   } else {
-    content = data.pokemons.map(item => {
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = data.pokemons.slice(indexOfFirstPost, indexOfLastPost);
+    console.log(data.pokemons.length);
+    content = currentPosts.map(item => {
       return (
         <Pokemon
           key={item.id}
@@ -63,8 +71,16 @@ function PokemonInfo(props) {
       );
     });
   }
+  // Change page
+  const onClickPaginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div className={classes.PokemonInfo}>
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts="50"
+        paginate={onClickPaginate}
+      />
       <h1>Pokemons</h1>
       {content}
     </div>
