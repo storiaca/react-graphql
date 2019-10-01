@@ -37,6 +37,13 @@ function Pokemon({ name, image, types, height, weight, attacks }) {
   );
 }
 
-Pokemon.propTypes = {};
+Pokemon.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  types: PropTypes.array.isRequired,
+  height: PropTypes.object.isRequired,
+  weight: PropTypes.object.isRequired,
+  attacks: PropTypes.object
+};
 
 export default Pokemon;

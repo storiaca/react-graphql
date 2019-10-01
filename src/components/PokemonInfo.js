@@ -56,7 +56,7 @@ function PokemonInfo(props) {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = data.pokemons.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(data.pokemons.length);
+    console.log(data);
     content = currentPosts.map(item => {
       return (
         <Pokemon
