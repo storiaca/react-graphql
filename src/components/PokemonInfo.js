@@ -46,9 +46,6 @@ function PokemonInfo(props) {
   const [postsPerPage] = useState(5);
   const { loading, data } = useQuery(GET_POKEMONS);
 
-  //console.log(data);
-  //console.log(props);
-
   let content;
   if (loading) {
     content = <Spinner />;
